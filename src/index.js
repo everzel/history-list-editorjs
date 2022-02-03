@@ -14,6 +14,7 @@ const LOADER_DELAY = 500;
  * @property {string} description - person's description
  * @property {string} nameDescription - nameDescription to person's website
  * @property {string} photo - person's photo url
+ * @property {string} label
  */
 
 /**
@@ -29,6 +30,7 @@ const LOADER_DELAY = 500;
  * @property {string} descriptionPlaceholder - placeholder for value field
  * @property {string} nameDescriptionPlaceholder - placeholder for value field
  * @property {string} title - placeholder for value field
+ * @property {string} labelPlaceholder
  */
 
 /**
@@ -59,7 +61,8 @@ export default class HistoryList {
       description: null,
       nameDescription: null,
       info: null,
-      photo: null
+      photo: null,
+      label: null
     };
 
     this.config = {
@@ -72,7 +75,8 @@ export default class HistoryList {
       namePlaceholder: config.namePlaceholder || 'Name',
       nameDescriptionPlaceholder: config.nameDescriptionPlaceholder || 'nameDescription',
       descriptionPlaceholder: config.descriptionPlaceholder || 'Description',
-      title: config.title || 'Personality'
+      title: config.title || 'Personality',
+      labelPlaceholder: config.labelPlaceholder || 'label'
     };
 
     /**
@@ -174,7 +178,8 @@ export default class HistoryList {
       photo: 'cdx-history__photo',
       nameDescription: 'cdx-history__nameDescription',
       description: 'cdx-history__description',
-      info: 'cdx-history__info'
+      info: 'cdx-history__info',
+      label: 'cdx-history__label'
     };
   }
 
@@ -188,14 +193,16 @@ export default class HistoryList {
     const description = toolsContent.querySelector(`.${this.CSS.description}`).textContent;
     const nameDescription = toolsContent.querySelector(`.${this.CSS.nameDescription}`).textContent;
     const photo = this.data.photo;
+    const label = toolsContent.querySelector(`.${this.CSS.label}`).textContent;
 
     /**
      * Fill missing fields with empty strings
      */
     Object.assign(this.data, {
       name: name.trim() || '',
-      description: description.trim() || '',
       nameDescription: nameDescription.trim() || '',
+      label: label.trim() || '',
+      description: description.trim() || '',
       photo: photo || ''
     });
 
@@ -207,12 +214,16 @@ export default class HistoryList {
    * @return {HTMLDivElement}
    */
   render() {
-    const { name, description, photo, nameDescription } = this.data;
+    const { name, nameDescription, label, description, photo } = this.data;
 
     this.nodes.wrapper = this.make('div', this.CSS.wrapper);
     this.nodes.info = this.make('div', this.CSS.info);
 
     this.nodes.name = this.make('div', this.CSS.name, {
+      contentEditable: true
+    });
+
+    this.nodes.label = this.make('div', this.CSS.label, {
       contentEditable: true
     });
 
@@ -248,6 +259,12 @@ export default class HistoryList {
       this.nodes.nameDescription.dataset.placeholder = this.config.nameDescriptionPlaceholder;
     }
 
+    if (label) {
+      this.nodes.label.textContent = label;
+    } else {
+      this.nodes.label.dataset.placeholder = this.config.labelPlaceholder;
+    }
+
     this.nodes.photo.addEventListener('click', () => {
       this.uploader.uploadSelectedFile({
         onPreview: () => {
@@ -258,6 +275,7 @@ export default class HistoryList {
 
     this.nodes.info.appendChild(this.nodes.name);
     this.nodes.info.appendChild(this.nodes.nameDescription);
+    this.nodes.info.appendChild(this.nodes.label);
     this.nodes.info.appendChild(this.nodes.description);
 
     this.nodes.wrapper.appendChild(this.nodes.photo);
@@ -277,6 +295,7 @@ export default class HistoryList {
      */
     return savedData.name ||
         savedData.nameDescription ||
+        savedData.label ||
         savedData.description ||
         savedData.photo;
   }

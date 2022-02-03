@@ -48,7 +48,7 @@
     border: 1px solid hsla(240,3%,79%,.48);
     padding: 8px;
     border-radius: 5px;
-    height: 40px;
+    height: 70px;
     overflow-y: scroll;
 }
 .cdx-history__nameDescription {
@@ -68,4 +68,13 @@
 
 .cdx-history__nameDescription {
     margin-top: 10px;
+}
+
+.cdx-history__label {
+    margin-top: 10px;
+    font-size: 0.80em;
+    color: #6e758a;
+    letter-spacing: 0.1px;
+    text-overflow: ellipsis;
+    outline: none;
 }
