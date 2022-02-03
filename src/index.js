@@ -169,12 +169,12 @@ export default class HistoryList {
       /**
        * Tool's classes
        */
-      wrapper: 'cdx-personality',
-      name: 'cdx-personality__name',
-      photo: 'cdx-personality__photo',
-      nameDescription: 'cdx-personality__nameDescription',
-      description: 'cdx-personality__description',
-      info: 'cdx-personality__info'
+      wrapper: 'cdx-history',
+      name: 'cdx-history__name',
+      photo: 'cdx-history__photo',
+      nameDescription: 'cdx-history__nameDescription',
+      description: 'cdx-history__description',
+      info: 'cdx-history__info'
     };
   }
 

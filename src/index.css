@@ -1,4 +1,4 @@
-.cdx-personality {
+.cdx-history {
     padding: 30px;
     margin: 0.7em 0;
     border: 1px solid #e5e6ec;
@@ -9,25 +9,25 @@
     justify-content: space-between;
     border-left: 3px dashed #1dca6c;
 }
-.cdx-personality::after {
+.cdx-history::after {
     content: '';
     clear: both;
     display: table;
 }
-.cdx-personality [contentEditable=true][data-placeholder]::before {
+.cdx-history [contentEditable=true][data-placeholder]::before {
     position: absolute;
     content: attr(data-placeholder);
     color: #707684;
     font-weight: normal;
     opacity: 0;
 }
-.cdx-personality [contentEditable=true][data-placeholder]:empty::before {
+.cdx-history [contentEditable=true][data-placeholder]:empty::before {
     opacity: 1;
 }
-.cdx-personality [contentEditable=true][data-placeholder]:empty:focus::before {
+.cdx-history [contentEditable=true][data-placeholder]:empty:focus::before {
     opacity: 0.3;
 }
-.cdx-personality__photo {
+.cdx-history__photo {
     float: right;
     width: 70px;
     height: 70px;
@@ -37,11 +37,11 @@
     cursor: pointer;
     overflow: hidden;
 }
-.cdx-personality__name {
+.cdx-history__name {
     font-weight: 600;
     outline: none;
 }
-.cdx-personality__description {
+.cdx-history__description {
     font-size: 0.86em;
     margin: 10px 0;
     outline: none;
@@ -51,21 +51,21 @@
     height: 40px;
     overflow-y: scroll;
 }
-.cdx-personality__nameDescription {
+.cdx-history__nameDescription {
     font-size: 0.68em;
     color: #6e758a;
     letter-spacing: 0.1px;
     text-overflow: ellipsis;
     outline: none;
 }
-.codex-editor--narrow .cdx-personality {
+.codex-editor--narrow .cdx-history {
     padding: 15px;
 }
 
-.cdx-personality__info {
+.cdx-history__info {
     width: 100%;
 }
 
-.cdx-personality__nameDescription {
+.cdx-history__nameDescription {
     margin-top: 10px;
 }
