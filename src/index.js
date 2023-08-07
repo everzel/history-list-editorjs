@@ -293,11 +293,7 @@ export default class HistoryList {
     /**
      * Return false if fields are empty
      */
-    return savedData.name ||
-        savedData.nameDescription ||
-        savedData.label ||
-        savedData.description ||
-        savedData.photo;
+    return savedData.name && savedData.label;
   }
 
   /**
